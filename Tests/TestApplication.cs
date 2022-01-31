@@ -3,8 +3,10 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 
 namespace WinFormUITesting
@@ -48,15 +50,31 @@ namespace WinFormUITesting
         [TestMethod]
         public void ComboTest()
         {
-            var combo = element.FindElementByClassName("Edit");
+            var combo = element.FindElementByName("comBox1");
             var open = combo.FindElementByName("Abrir");
             combo.SendKeys(Keys.Down);
+            var listItems = combo.FindElementByTagName("ListItem");
 
             open.Click();
-            var listItems = combo.FindElementByTagName("ListItem");
-            Thread.Sleep(3000);
+
+            listItems = combo.FindElementByTagName("ListItem");
+            foreach (var item in listItems)
+            {
+                if (item.Text == "NJ")
+                {
+                    item.Click();
+                }
+            }
         }
 
+        [TestMethod]
+        public void MenuTest()
+        {
+            element.FindElementByName("File").Click();
+            element.FindElementByName("New").Click();
+            element.FindElementByName("First").Click();
+        }
+        
 
     }
 }
