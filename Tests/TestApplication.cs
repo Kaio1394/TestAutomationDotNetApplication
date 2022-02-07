@@ -71,10 +71,17 @@ namespace WinFormUITesting
         public void MenuTest()
         {
             element.FindElementByName("File").Click();
-            element.FindElementByName("New").Click();
+            element.FindElementByName("New").Click(); 
             element.FindElementByName("First").Click();
         }
-        
+
+        [TestMethod]
+        public void GridTest()
+        {
+            var ratesGrid = element.FindElementByName("Rates Grid");
+            var allHeadres = ratesGrid.FindElementByTagName("Header");
+        }
+
 
     }
 }
