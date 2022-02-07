@@ -83,9 +83,16 @@ namespace WinFormUITesting
 
             Debug.WriteLine($"Headers count: {allHeaders.Count()}");
 
-            foreach (var item in allHeaders)
+            foreach (var h in allHeaders)
             {
+                Debug.WriteLine($"*** {h.Text} - {h.Displayed} - {h.Enabled}");
+            }
 
+            var allCells = ratesGrid.FindElementByTagName("DataItem");
+
+            foreach (var item in allCells)
+            {
+                Debug.WriteLine($"*** cell Name: {item.GetAttribute("Name")} - Text: {item.Text}");
             }
         }
 
