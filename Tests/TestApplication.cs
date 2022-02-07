@@ -21,7 +21,7 @@ namespace WinFormUITesting
         {
             
             AppiumOptions appOptions = new AppiumOptions();
-            appOptions.AddAdditionalCapability("app", Properties.Resources.ApplicationApp);
+            appOptions.AddAdditionalCapability("app", Properties.Resources.ApplicationAppWithGrid);
             element = new WindowsDriver<WindowsElement>(new Uri("http://127.0.0.1:4723/"), appOptions);
         }
 
@@ -79,7 +79,14 @@ namespace WinFormUITesting
         public void GridTest()
         {
             var ratesGrid = element.FindElementByName("Rates Grid");
-            var allHeadres = ratesGrid.FindElementByTagName("Header");
+            var allHeaders = ratesGrid.FindElementByTagName("Header");
+
+            Debug.WriteLine($"Headers count: {allHeaders.Count()}");
+
+            foreach (var item in allHeaders)
+            {
+
+            }
         }
 
 
